@@ -370,6 +370,26 @@ class vr_cloud {
 		
 	}
 	
+	// add slave dns zone
+	public function dns_add_slave($domain, $master_ip) {
+		$data['name'] = $domain;
+		$data['type'] = 'SLAVE';
+		$data['master'] = $master_ip;
+		
+		$result = $this->_call("dns/zone", $data, "post");
+		
+		return $result;
+	}
+	
+	// delete slave dns zone
+	public function dns_del_slave($id) {
+		$data['id'] = $id;
+		
+		$result = $this->_call("dns/zone/$id", $data, "delete");
+		
+		return $result;
+	}
+	
 	// get id
 	private function _get_id() {
 		return $this->id;
