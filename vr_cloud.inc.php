@@ -414,6 +414,16 @@ class vr_cloud {
 				return $response;
 			
 			break;
+			
+			case "delete":
+				
+				$curl = new Curl;
+				$url = $this->api_host . $call . "?key=$this->key";
+				$response = $curl->request('DELETE', $url, $data);
+				$response = json_decode($response->body);	
+				return $response;
+				
+			break;
 
 			default :
 
